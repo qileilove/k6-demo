@@ -19,3 +19,7 @@ The script here is an example of a low Virtual User (VU) load test of the excell
 https://swapi.dev/
 
 If you're tinkering with the script, it is just a friendly open source API, be gentle!
+
+#### run special script
+
+docker-compose run --entrypoint="/bin/sh -c" k6 "chmod +x /scripts/entrypoint.sh && /scripts/entrypoint.sh ewoks1.js"

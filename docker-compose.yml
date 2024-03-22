@@ -7,8 +7,6 @@ networks:
 services:
   influxdb:
     image: influxdb:1.8
-#    entrypoint: /bin/sh
-#    user: root
     networks:
       - k6
       - grafana
@@ -19,8 +17,6 @@ services:
 
   grafana:
     image: grafana/grafana:8.5.21
-#    entrypoint: /bin/sh
-#    user: root
     networks:
       - grafana
     ports:
@@ -37,8 +33,8 @@ services:
 
   k6:
     image: loadimpact/k6:latest
-#    entrypoint: /bin/sh
-#    user: root
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["chmod +x /scripts/entrypoint.sh && /scripts/entrypoint.sh $0", "your_script.js"]
     platform: linux/x86_64
     networks:
       - k6
